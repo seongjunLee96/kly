@@ -31,12 +31,23 @@ public class MemberContentListAction implements Action{
 		
 		MemberContentListService memberContentListService = new MemberContentListService();
 		
+		
+		ActionForward forward = null;
+		PrintWriter out = response.getWriter();
+
 		if(listType.equals("article")) {
-			BoardBean articleList = memberContentListService.getMemberArticleList(memberID);
+			ArrayList<BoardBean> articleList = memberContentListService.getMemberArticleList(memberID);
 			if(articleList != null) {
 				request.setAttribute("articleList", articleList);
+				forward = new ActionForward();
+				forward.setPath("./myPageList.jsp");
+				System.out.println("action 테스트 : " +articleList.get(1).getBOARD_SUBJECT());
 			} else {
-				System.out.println("실패");
+				out.println("<script>");
+				out.println("alert('게시물 조회를 실패했습니다.')");
+				out.println("location.href='./myPageList.jsp';");
+				out.println("</script>");
+				out.close();
 			}
 
 		} else if(listType.equals("comment")) {
@@ -58,8 +69,6 @@ public class MemberContentListAction implements Action{
 		}
 		
 		
-		
-		ActionForward forward = null;
 		return forward;
 		
 	}

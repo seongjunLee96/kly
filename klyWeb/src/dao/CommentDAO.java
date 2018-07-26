@@ -73,7 +73,7 @@ public class CommentDAO {
 	}
 
 	public ArrayList<CommentBean> getSuependCommentList() {
-		String sql = "SELECT * FROM REPLY WHERE COMMENT_BLIND > 3";
+		String sql = "SELECT * FROM BOARD_COMMENT WHERE COMMENT_BLIND > 3";
 		
 		ArrayList<CommentBean> commentList = new ArrayList<CommentBean>();
 		try {

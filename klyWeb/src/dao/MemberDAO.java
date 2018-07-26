@@ -257,11 +257,4 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
-	public BoardBean getMemberArticle(String memberID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

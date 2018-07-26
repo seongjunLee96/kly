@@ -123,8 +123,6 @@ public class MemberController extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-			
-			
 		} else if(command.equals("/myContent.kly")) {
 			action = new MemberContentListAction();
 			try {
@@ -186,6 +184,7 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 		
 		// ActionForward 인스턴스에 따른 forwarding
 		if(forward!=null) {

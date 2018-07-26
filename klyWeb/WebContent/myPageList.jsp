@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="bean.MemberBean" %>
+<%@ page import="bean.BoardBean" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -49,37 +50,51 @@
         
 		<div class="col-md-8 col-lg-10">
 			<div class="container">
+				
+				<div class="btn-group center">
+					<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=article';">작성한 게시물</button>
+					<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=comment'">댓글</button>
+					<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=liked'">추천한 게시물</button>
+				</div>
+				
 				<table class="table table-hover">
 					<thead class="thead-light">
 						<tr>
 							<th colspan="3">
 								<div class="container-fluid" style="text-align: center;">
-									<div class="btn-group center">
-										<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=article';">작성한 게시물</button>
-										<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=comment'">댓글</button>
-										<button class="btn btn-secondary" onclick="location.href ='./myContent.kly?listType=liked'">추천한 게시물</button>
-									</div>
+									asd
 								</div>
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>게시물 번호</td>
-							<td>게시물 링크</td>
-							<td>수정 버튼</td>
-						<tr>
+						<c:forEach var="article" items="${articleList}">
+							<tr>
+								<td>${article.BOARD_SUBJECT}</td>
+								<td>${article.BOARD_VIDEO_URL}</td>
+								<td><button class="btn btn-info">수정</button></td>
+							<tr>
+						</c:forEach>
+					<%-- <%
+						} else if(request.getAttribute("listType").equals("comment")) {
+					%>
 						<tr>
 							<td>댓글 번호</td>
 							<td>게시물 링크</td>
 							<td>수정 버튼</td>
 						<tr>
+					<%
+						} else if(request.getAttribute("listType").equals("liked")) {
+					%>
 						<tr>
 							<td>추천 게시물 번호</td>
 							<td>게시물 링크</td>
 							<td>추천 취소 버튼</td> <!-- 추천하기 버튼 -->
 						<tr>
-					</tbody>
+					<%
+						}
+					%> --%>
+ 					</tbody>
 				</table>
 			</div>
 		</div>

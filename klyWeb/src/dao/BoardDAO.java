@@ -216,7 +216,45 @@ public class BoardDAO {
 		}
 		return insertResult;
 
-	}/*
+	}
+	
+	public ArrayList<BoardBean> getMemberArticle(String memberID) {
+		String sql = "SELECT * FROM BOARD WHERE MEMBER_ID = ?";
+		
+		ArrayList<BoardBean> articleList = new ArrayList<BoardBean>();
+		System.out.println("BoardDAO 로 넘어온 boardID의 값 : "+memberID);
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberID);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardBean boardBean = new BoardBean();
+				boardBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				boardBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				boardBean.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				boardBean.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				boardBean.setBOARD_VIDEO_URL(rs.getString("BOARD_URL"));
+				boardBean.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
+				boardBean.setBOARD_BLIND(rs.getInt("BOARD_BLIND"));
+				boardBean.setBOARD_TAG(rs.getString("BOARD_TAG"));
+				boardBean.setBOARD_CATEGORY(rs.getString("BOARD_CATEGORY"));
+				articleList.add(boardBean);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return articleList; // 데이터베이스 오류
+	}
+
+	/*
 	//전체 글 갯수 가져오기 메소스
 	public int getListCount() {
 		int listCount = 0;
