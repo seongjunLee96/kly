@@ -10,6 +10,7 @@ import bean.CommentBean;
 import bean.LikeBean;
 import dao.BoardDAO;
 import dao.CommentDAO;
+import dao.LikeDAO;
 
 public class MemberContentListService {
 
@@ -43,15 +44,15 @@ public class MemberContentListService {
 	}
 
 	/** 멤버 한명의 추천 게시물 가져오기 */
-	public LikeBean getMemberLikedList(String memberID) {
-		CommentDAO commentDAO = CommentDAO.getInstance();
+	public ArrayList<LikeBean> getMemberLikedList(String memberID) {
+		LikeDAO likeDAO = LikeDAO.getInstance();
 		Connection con = getConnection();
-		commentDAO.setConnection(con);
+		likeDAO.setConnection(con);
 
-		LikeBean likeArticle = commentDAO.getMemberLike(memberID);
+		ArrayList<LikeBean> likeList = likeDAO.getMemberLike(memberID);
 		close(con);
 		
-		return likeArticle;
+		return likeList;
 	}
 
 }

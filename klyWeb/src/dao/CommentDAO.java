@@ -12,18 +12,18 @@ import bean.MemberBean;
 
 public class CommentDAO {
 	// singleton
-	private static CommentDAO memberDAO;
+	private static CommentDAO commentDAO;
 	private CommentDAO() {
 		
 	}
 	
 	// MemberDAO 인스턴스 생성 메소드
 	public static CommentDAO getInstance() {
-		if(memberDAO==null) {
-			memberDAO = new CommentDAO();
+		if(commentDAO==null) {
+			commentDAO = new CommentDAO();
 		}
 		
-		return memberDAO;
+		return commentDAO;
 	}
 	
 	// db 설정용 필드
@@ -107,10 +107,5 @@ public class CommentDAO {
 		}
 		return commentList;
 	}
-
-	public LikeBean getMemberLike(String memberID) {
-		return null;
-	}
-
 
 }

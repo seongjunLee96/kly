@@ -72,15 +72,15 @@
 					
 						
 						<c:choose>
-				        	<c:when test="${param.listType eq 'article'}">
-			        			<c:forEach var="article" items="${articleList}">
+							<c:when test="${param.listType eq 'article'}">
+								<c:forEach var="article" items="${articleList}">
 									<tr>
 										<td>${article.BOARD_SUBJECT}</td>
 										<td>${article.BOARD_VIDEO_URL}</td>
 										<td><button class="btn btn-info">수정</button></td>
 									<tr>
 								</c:forEach>
-				        	</c:when>
+							</c:when>
 							
 							<c:when test="${param.listType eq 'comment'}">
 								<c:forEach var="comment" items="${commentList}">
@@ -93,10 +93,10 @@
 							</c:when>
 							
 							<c:when test="${param.listType eq 'liked'}">
-								<c:forEach var="article" items="${articleList}">
+								<c:forEach var="like" items="${likeList}">
 									<tr>
-										<td>${article.BOARD_SUBJECT}</td>
-										<td>${article.BOARD_VIDEO_URL}</td>
+										<td>${like.BOARD_NUM}</td>
+										<td>${like.LIKE_NUM}</td>
 										<td><button class="btn btn-info">수정</button></td>
 									<tr>
 								</c:forEach>

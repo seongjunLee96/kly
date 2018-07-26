@@ -62,12 +62,17 @@ public class MemberContentListAction implements Action{
 				out.close();
 			}
 		} else if(listType.equals("liked")) {
-			LikeBean likeList = memberContentListService.getMemberLikedList(memberID);
-			
+			ArrayList<LikeBean> likeList = memberContentListService.getMemberLikedList(memberID);
 			if(likeList != null) {
 				request.setAttribute("likeList", likeList);
+				forward = new ActionForward();
+				forward.setPath("./myPageList.jsp");
 			} else {
-				System.out.println("실패");
+				out.println("<script>");
+				out.println("alert('댓글 조회를 실패했습니다.')");
+				out.println("location.href='./myPageList.jsp';");
+				out.println("</script>");
+				out.close();
 			}
 		}
 		
