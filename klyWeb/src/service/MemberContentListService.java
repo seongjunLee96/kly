@@ -28,15 +28,18 @@ public class MemberContentListService {
 	}
 	
 	/** 멤버 한명의 댓글 가져오기 */
-	public CommentBean getMemberCommentList(String memberID) {
+	public ArrayList<CommentBean> getMemberCommentList(String memberID) {
 		CommentDAO commentDAO = CommentDAO.getInstance();
 		Connection con = getConnection();
 		commentDAO.setConnection(con);
 
-		CommentBean comment = commentDAO.getMemberComment(memberID);
+		ArrayList<CommentBean> commentList = commentDAO.getMemberComment(memberID);
+		if(commentList.size() > 2) {
+			System.out.println(memberID+"의 댓글 리스트 불러오기 성공 at service\n");
+		}
 		close(con);
 		
-		return comment;
+		return commentList;
 	}
 
 	/** 멤버 한명의 추천 게시물 가져오기 */

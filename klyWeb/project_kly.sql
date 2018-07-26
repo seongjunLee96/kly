@@ -68,28 +68,39 @@ SELECT * FROM MEMBER;
 DROP TABLE BOARD;
 DROP TABLE MEMBER;
 
--- Dummy MEMBER (5)
+-- Dummy Data MEMBER (5)
 INSERT INTO MEMBER VALUES('A','1234','koxk@naver.com',0,Sysdate,0);
 INSERT INTO MEMBER VALUES('B','1234','dwqwe2@gmail.com',0,sysdate,0);
 INSERT INTO MEMBER VALUES('C','1234','Jony123@gmail.com',0,sysdate,0);
 INSERT INTO MEMBER VALUES('D','1234','dfdsfw@gmail.com',0,sysdate,0);
 INSERT INTO MEMBER VALUES('E','1234','whdwrkdgu@daum.net',0,sysdate,0);
--- Dummy BOARD (5)
+
+-- Dummy Data BOARD (10)
 INSERT INTO BOARD VALUES('A',1,'aA',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/zjwqIyoWV8c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'롤','게임');
 INSERT INTO BOARD VALUES('B',2,'aB',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/sB-yuZ2Qncg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'배그','게임');
 INSERT INTO BOARD VALUES('C',3,'aC',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/1yDYGOFc5qY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'일상','유머');
 INSERT INTO BOARD VALUES('D',4,'aD',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/9Xlc_UyjQQY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'축구','스포츠');
 INSERT INTO BOARD VALUES('E',5,'aE',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/f3P_lHInI14" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'개','동물');
+INSERT INTO BOARD VALUES('tempId',6,'aE',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/f3P_lHInI14" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'개','동물');
+INSERT INTO BOARD VALUES('qwe',7,'aA',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/zjwqIyoWV8c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'롤','게임');
+INSERT INTO BOARD VALUES('qwe',8,'aB',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/sB-yuZ2Qncg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'배그','게임');
+INSERT INTO BOARD VALUES('qwe',9,'aC',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/1yDYGOFc5qY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'일상','유머');
+INSERT INTO BOARD VALUES('qwe',10,'aD',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/9Xlc_UyjQQY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'축구','스포츠');
+INSERT INTO BOARD VALUES('qwe',11,'aE',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/f3P_lHInI14" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'개','동물');
+INSERT INTO BOARD VALUES('qwe',12,'aE',Sysdate,null,'<iframe width="420" height="720" src="https://www.youtube.com/embed/f3P_lHInI14" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',0,0,0,'개','동물');
 
--- Dummy COMMENT(REPLY) (5)
-INSERT INTO REPLY VALUES(1,'tempId',1,'안녕하세요',SYSDATE,0);
-INSERT INTO REPLY VALUES(1,'tempId',2,'안녕하세요',SYSDATE,0);
-INSERT INTO REPLY VALUES(1,'tempId',3,'안녕하세요',SYSDATE,0);
-INSERT INTO REPLY VALUES(1,'tempId',4,'안녕하세요',SYSDATE,0);
-INSERT INTO REPLY VALUES(1,'tempId',5,'안녕하세요',SYSDATE,0);
-INSERT INTO REPLY VALUES(1,'tempId',6, 'asd',SYSDATE,6);
-INSERT INTO REPLY VALUES(1,'tempId',7,'Asdasss',SYSDATE,5);
-INSERT INTO REPLY VALUES(1,'tempId',8,'ASdasdsadkj',SYSDATE,4);
+-- Dummy Data COMMENT(REPLY) (5)
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',1,'안녕하세요',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',2,'안녕하세요',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',3,'안녕하세요',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',4,'안녕하세요',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',5,'안녕하세요',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',6, 'asd',SYSDATE,6);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',7,'Asdasss',SYSDATE,5);
+INSERT INTO BOARD_COMMENT VALUES(1,'tempId',8,'ASdasdsadkj',SYSDATE,4);
+INSERT INTO BOARD_COMMENT VALUES(1,'qwe',9,'ㅋㅋㅋㅋㅋㅋadkj',SYSDATE,0);
+INSERT INTO BOARD_COMMENT VALUES(1,'qwe',10,'get the fuck out a here',SYSDATE,4);
+INSERT INTO BOARD_COMMENT VALUES(1,'qwe',11,'반갑습니다',SYSDATE,0);
 
 -- DAO TEST
 UPDATE MEMBER SET MEMBER_PW = '132' WHERE MEMBER_ID = 'asd';

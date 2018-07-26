@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="bean.MemberBean" %>
 <%@ page import="bean.BoardBean" %>
+<%@ page import="bean.CommentBean" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -68,32 +69,44 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="article" items="${articleList}">
-							<tr>
-								<td>${article.BOARD_SUBJECT}</td>
-								<td>${article.BOARD_VIDEO_URL}</td>
-								<td><button class="btn btn-info">수정</button></td>
-							<tr>
-						</c:forEach>
-					<%-- <%
-						} else if(request.getAttribute("listType").equals("comment")) {
-					%>
-						<tr>
-							<td>댓글 번호</td>
-							<td>게시물 링크</td>
-							<td>수정 버튼</td>
-						<tr>
-					<%
-						} else if(request.getAttribute("listType").equals("liked")) {
-					%>
-						<tr>
-							<td>추천 게시물 번호</td>
-							<td>게시물 링크</td>
-							<td>추천 취소 버튼</td> <!-- 추천하기 버튼 -->
-						<tr>
-					<%
-						}
-					%> --%>
+					
+						
+						<c:choose>
+				        	<c:when test="${param.listType eq 'article'}">
+			        			<c:forEach var="article" items="${articleList}">
+									<tr>
+										<td>${article.BOARD_SUBJECT}</td>
+										<td>${article.BOARD_VIDEO_URL}</td>
+										<td><button class="btn btn-info">수정</button></td>
+									<tr>
+								</c:forEach>
+				        	</c:when>
+							
+							<c:when test="${param.listType eq 'comment'}">
+								<c:forEach var="comment" items="${commentList}">
+									<tr>
+										<td>${comment.COMMENT_CON}</td>
+										<td>${comment.COMMENT_DATE}</td>
+										<td><button class="btn btn-info">수정</button></td>
+									<tr>
+								</c:forEach>
+							</c:when>
+							
+							<c:when test="${param.listType eq 'liked'}">
+								<c:forEach var="article" items="${articleList}">
+									<tr>
+										<td>${article.BOARD_SUBJECT}</td>
+										<td>${article.BOARD_VIDEO_URL}</td>
+										<td><button class="btn btn-info">수정</button></td>
+									<tr>
+								</c:forEach>
+							</c:when>
+
+							<c:otherwise>
+							</c:otherwise>
+
+						</c:choose>
+ 					
  					</tbody>
 				</table>
 			</div>

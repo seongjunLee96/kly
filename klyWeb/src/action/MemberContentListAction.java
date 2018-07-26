@@ -41,7 +41,6 @@ public class MemberContentListAction implements Action{
 				request.setAttribute("articleList", articleList);
 				forward = new ActionForward();
 				forward.setPath("./myPageList.jsp");
-				System.out.println("action 테스트 : " +articleList.get(1).getBOARD_SUBJECT());
 			} else {
 				out.println("<script>");
 				out.println("alert('게시물 조회를 실패했습니다.')");
@@ -49,14 +48,18 @@ public class MemberContentListAction implements Action{
 				out.println("</script>");
 				out.close();
 			}
-
 		} else if(listType.equals("comment")) {
-			CommentBean commentList = memberContentListService.getMemberCommentList(memberID);
-			
+			ArrayList<CommentBean> commentList = memberContentListService.getMemberCommentList(memberID);
 			if(commentList != null) {
 				request.setAttribute("commentList", commentList);
+				forward = new ActionForward();
+				forward.setPath("./myPageList.jsp");
 			} else {
-				System.out.println("실패");
+				out.println("<script>");
+				out.println("alert('댓글 조회를 실패했습니다.')");
+				out.println("location.href='./myPageList.jsp';");
+				out.println("</script>");
+				out.close();
 			}
 		} else if(listType.equals("liked")) {
 			LikeBean likeList = memberContentListService.getMemberLikedList(memberID);

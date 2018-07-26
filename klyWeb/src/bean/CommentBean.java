@@ -9,6 +9,7 @@ public class CommentBean {
 	private String COMMENT_CON;
 	private Date COMMENT_DATE;
 	private int COMMENT_BLIND;
+	
 	public int getBOARD_NUM() {
 		return BOARD_NUM;
 	}
