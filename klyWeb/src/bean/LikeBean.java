@@ -4,6 +4,7 @@ public class LikeBean {
 	private int LIKE_NUM;
 	private int BOARD_NUM;
 	private String MEMBER_ID;
+	
 	public int getLIKE_NUM() {
 		return LIKE_NUM;
 	}
