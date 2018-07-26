@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*" %>
+<%@ page import="bean.BoardBean" %>
+<%-- <%
+	if(request.getServletPath().equals("/index.jsp")) {
+		response.sendRedirect("./index.kly");
+	}
+%> --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,28 +71,16 @@
 			                <td>조회수</td>
 			            </tr>
 					<!-- 여기서 게시물 반복 -->
-			            <tr>
-			                <td>1</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
+			            <c:forEach var="topArticle" items="${topReadcountList}">
+				            <tr>
+				                <td>${topArticle.BOARD_NUM}</td>
+				                <td>가상 섬네일</td>
+				                <td>${topArticle.BOARD_SUBJECT}</td>
+				                <td>가상 좋아요</td>
+				                <td>${topArticle.BOARD_READCOUNT}</td>
+				            </tr>
+			            </c:forEach>
 					<!-- 여기까지 -->
-			            <tr>
-			                <td>2</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
-			            <tr>
-			                <td>3</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
 		            </tbody>
 		        </table>	
 			</div>
@@ -109,20 +105,6 @@
 			            </tr>
 			            <tr>
 			                <td>1</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
-			            <tr>
-			                <td>2</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
-			            <tr>
-			                <td>3</td>
 			                <td>img</td>
 			                <td>subject</td>
 			                <td>12</td>

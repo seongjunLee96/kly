@@ -19,9 +19,11 @@
         <a href="./index.jsp"><img src="./images/kly_logo_white.png" style="height: 45px" /></a>
 
         <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-            
-        </ul>
+		<ul class="navbar-nav mr-auto">
+		    <li class="nav-item">
+				<a class="nav-link" href="./List.jsp">video list</a>
+			</li>
+		</ul>
         
         <c:choose>
         	<c:when test="${empty loginInfo.getMEMBER_ID()}">
@@ -37,7 +39,7 @@
 			
 			<c:when test="${loginInfo.getMEMBER_ID().equals('admin')}">
         		<div class="btn-group">
-		       		 <button class="btn btn-outline-info" onclick="location.href='./adminBoard.jsp'">
+		       		 <button class="btn btn-outline-info" onclick="location.href='./BoardSuspendList.kly'">
 	        	    	관리자 모드
 	        	    </button>
 	        	    <button class="btn btn-outline-danger" onclick="location.href='./memberLogout.kly'">

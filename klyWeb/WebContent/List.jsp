@@ -7,37 +7,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    #leftbody{
-        padding: 5px;
-    }
-    #category{
-        margin: 5px 5px 20px 5px;
-    } 
-    #register{
-        margin: 5px 5px 20px 5px;
-    }
-</style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<style>
+	    #leftbody{
+	        padding: 5px;
+	    }
+	    #category{
+	        margin: 5px 5px 20px 5px;
+	    } 
+	    #register{
+	        margin: 5px 5px 20px 5px;
+	    }
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<title> Title </title>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-info navbar-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
-<div class="mr-auto"></div>
-<div class="btn-group btn-group-lg">
-<button type="button" class="btn btn-outline-dark" >로그인</button>
-<button type="button" class="btn btn-outline-dark" >회원가입</button>
-</div>
-</nav>
+	 <%@include file="./navbarTemplate.jsp" %>
+	
 <div class="main" style="height: 1080px; width: 1920px">
 <div class="bg-dark" id="leftbody" style="height: 1080px; width: 250px;float: left;">
     <button type="button" class="btn btn-success" style="width:95%;" id="category" onclick="location='boardList.kly'">전체보기</button>

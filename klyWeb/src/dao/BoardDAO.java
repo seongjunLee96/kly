@@ -251,7 +251,7 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
-		return articleList; // 데이터베이스 오류
+		return articleList;
 	}
 
 	/*
@@ -635,6 +635,76 @@ public class BoardDAO {
 			}
 				return boardList;
 		}
+
+	public ArrayList<BoardBean> getTopReadcountList() {
+		String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY BOARD_READCOUNT DESC)"
+				+ "WHERE ROWNUM >=1 AND ROWNUM <= 3;";
+		
+		ArrayList<BoardBean> topReadcountList = new ArrayList<BoardBean>();
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardBean boardBean = new BoardBean();
+				boardBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				boardBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				boardBean.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				boardBean.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				boardBean.setBOARD_VIDEO_URL(rs.getString("BOARD_URL"));
+				boardBean.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
+				boardBean.setBOARD_BLIND(rs.getInt("BOARD_BLIND"));
+				boardBean.setBOARD_TAG(rs.getString("BOARD_TAG"));
+				boardBean.setBOARD_CATEGORY(rs.getString("BOARD_CATEGORY"));
+				topReadcountList.add(boardBean);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return topReadcountList; // 데이터베이스 오류
+	}
+	
+	/*public ArrayList<BoardBean> getTopLikeList() {
+		String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY BOARD_READCOUNT DESC)"
+				+ "WHERE ROWNUM >=1 AND ROWNUM <= 3;";
+		
+		ArrayList<BoardBean> topReadcountList = new ArrayList<BoardBean>();
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardBean boardBean = new BoardBean();
+				boardBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				boardBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+				boardBean.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				boardBean.setBOARD_DATE(rs.getDate("BOARD_DATE"));
+				boardBean.setBOARD_VIDEO_URL(rs.getString("BOARD_URL"));
+				boardBean.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
+				boardBean.setBOARD_BLIND(rs.getInt("BOARD_BLIND"));
+				boardBean.setBOARD_TAG(rs.getString("BOARD_TAG"));
+				boardBean.setBOARD_CATEGORY(rs.getString("BOARD_CATEGORY"));
+				topReadcountList.add(boardBean);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return topReadcountList; // 데이터베이스 오류
+	}*/
 }
 
 

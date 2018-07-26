@@ -15,6 +15,7 @@ import action.BoardCategoryAction;
 import action.BoardCommentAction;
 import action.BoardListAction;
 import action.BoardSuspendListAction;
+import action.BoardTopListAction;
 import action.BoardWriteAction;
 import action.EmailAuthAction;
 import action.EmailCheckedAction;
@@ -74,7 +75,14 @@ public class MemberController extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/emailAuthAction.kly")) {
+		} else if(command.equals("/index.kly")) {
+			action = new BoardTopListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}  else if(command.equals("/emailAuthAction.kly")) {
 			action = new EmailAuthAction();
 			try {
 				forward = action.execute(request, response);
