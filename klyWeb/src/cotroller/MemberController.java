@@ -75,7 +75,7 @@ public class MemberController extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/index.kly")) {
+		} else if(command.equals("/indexList.kly")) {
 			action = new BoardTopListAction();
 			try {
 				forward = action.execute(request, response);

@@ -20,8 +20,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     
-    <script src="./script.js"></script>
-    <title>kly</title>
+	<!-- 리스트 출력 프로세스 -->
+	<script type="text/javascript">
+		function ajs() {
+			var req= new XMLHttpRequest();
+			req.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status ==200) {
+					document.getElementById("demo").innerHTML = this.responseTest;
+				}
+			};
+			req.open("GET","./just.txt",true);
+			req.send();
+		}
+	</script>
+
+
+	<title>kly</title>
 
 </head>
 
@@ -63,26 +77,15 @@
 							</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="topReadcountList">
 			            <tr style="font-weight: bold;">
 			                <td>번호</td>
 			                <td colspan="2">제목</td>
 			                <td>좋아요</td>
 			                <td>조회수</td>
 			            </tr>
-					<!-- 여기서 게시물 반복 -->
-			            <c:forEach var="topArticle" items="${topReadcountList}">
-				            <tr>
-				                <td>${topArticle.BOARD_NUM}</td>
-				                <td>가상 섬네일</td>
-				                <td>${topArticle.BOARD_SUBJECT}</td>
-				                <td>가상 좋아요</td>
-				                <td>${topArticle.BOARD_READCOUNT}</td>
-				            </tr>
-			            </c:forEach>
-					<!-- 여기까지 -->
-		            </tbody>
-		        </table>	
+					</tbody>
+				</table>	
 			</div>
 			
 			<!-- <div class="col-lg-2"></div> -->
@@ -114,7 +117,9 @@
 		        </table>
 			</div>
 		</div>
-		
+		<div class="container" id="demo">
+			<button onclick="ajs()" >z</button>
+		</div>
 	</div>
 
 	<!-- 하단바(footer) -->
