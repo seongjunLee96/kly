@@ -54,9 +54,47 @@
 					document.getElementById("topReadcountList").innerHTML = out;
 				}
 			
-			req.open("GET","./indexList.kly", true);
+			req.open("GET","./indexTopList.kly", true);
 			req.send();
 		}
+		
+		 function ajs () { // 이게 페이지 로드 시 출력되게 수정, 아마 window.onload
+				var req= new XMLHttpRequest();
+				req.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status ==200) {
+						var arr = JSON.parse(this.responseText);
+						var out =
+							"<tr>" +
+								"<td>" + arr.value0[0] + "</td>"+
+								"<td><img src=\"" + arr.value0[1] + "\"></td>"+
+								"<td>" + arr.value0[2] + "</td>"+
+								"<td>" + arr.value0[3] + "</td>"+
+								"<td>" + 44 + "</td>"+
+							"</tr>" +
+							"<tr>" +
+								"<td>" + arr.value1[0] + "</td>"+
+								"<td><img src=\"" + arr.value1[1] + "\"></td>"+
+								"<td>" + arr.value1[2] + "</td>"+
+								"<td>" + arr.value1[3] + "</td>"+
+								"<td>" + 44 + "</td>"+
+							"</tr>" +
+							"<tr>" +
+								"<td>" + arr.value2[0] + "</td>"+
+								"<td><img src=\"" + arr.value2[1] + "\"></td>"+
+								"<td>" + arr.value2[2] + "</td>"+
+								"<td>" + arr.value2[3] + "</td>"+
+								"<td>" + 44 + "</td>"+
+							"</tr>";
+						}
+					
+						document.getElementById("topLikedList").innerHTML = out;
+					}
+				
+				req.open("GET","./indexLikeList.kly", true);
+				req.send();
+			}
+		 
+		 ajs();
 	</script>
 
 
@@ -120,32 +158,26 @@
 					<thead class="thead-light">
 						<tr>
 							<th colspan="5">
-			                    	추천수 상위 5개 게시물
-			                </th>
+								추천수 상위 5개 게시물
+							</th>
 						</tr>
-						 <tr style="font-weight: bold;">
-			                <td>번호</td>
-			                <td colspan="2">제목</td>
-			                <td>좋아요</td>
-			                <td>조회수</td>
-			            </tr>
+						<tr style="font-weight: bold;">
+							<td>번호</td>
+							<td colspan="2">제목</td>
+							<td>좋아요</td>
+							<td>조회수</td>
+						</tr>
 					</thead>
-		            <tbody>
-			           
-			            <tr>
-			                <td>1</td>
-			                <td>img</td>
-			                <td>subject</td>
-			                <td>12</td>
-			                <td>2</td>
-			            </tr>
-		            </tbody>
-		        </table>
+					
+					<tbody id="topLikedList">
+					</table>
 			</div>
 		</div>
-		<div class="container" id="demo">
+		
+		<!-- <div class="container" id="demo">
 			<button onclick="ajs()" >Ajax Test Button</button>
-		</div>
+		</div> -->
+		
 	</div>
 
 	<!-- 하단바(footer) -->

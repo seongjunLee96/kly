@@ -672,17 +672,19 @@ public class BoardDAO {
 		}
 		return topReadcountList; // 데이터베이스 오류
 	}
-	
-	/*public ArrayList<BoardBean> getTopLikeList() {
-		String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY BOARD_READCOUNT DESC)"
-				+ "WHERE ROWNUM >=1 AND ROWNUM <= 3;";
+
+	public ArrayList<BoardBean> getTopLikeList() {
+		String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY BOARD_LIKECOUNT DESC)"
+				+ " WHERE ROWNUM >=1 AND ROWNUM <= 3";
 		
-		ArrayList<BoardBean> topReadcountList = new ArrayList<BoardBean>();
+		ArrayList<BoardBean> topLikeList = new ArrayList<BoardBean>();
 		try {
 			pstmt = con.prepareStatement(sql);
+			System.out.println("쿼리문 준비");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				System.out.println("쿼리문 완료");
 				BoardBean boardBean = new BoardBean();
 				boardBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
 				boardBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));
@@ -693,7 +695,7 @@ public class BoardDAO {
 				boardBean.setBOARD_BLIND(rs.getInt("BOARD_BLIND"));
 				boardBean.setBOARD_TAG(rs.getString("BOARD_TAG"));
 				boardBean.setBOARD_CATEGORY(rs.getString("BOARD_CATEGORY"));
-				topReadcountList.add(boardBean);
+				topLikeList.add(boardBean);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -705,12 +707,6 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
-		return topReadcountList; // 데이터베이스 오류
-	}*/
+		return topLikeList; // 데이터베이스 오류
+	}
 }
-
-
-
-
-
-

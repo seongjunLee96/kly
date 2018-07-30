@@ -26,7 +26,7 @@ public class BoardTopListService {
 	}
 	
 	/** 추천수 top 3 가져오기 */
-/*	public ArrayList<BoardBean> getTopLikeList() {
+	public ArrayList<BoardBean> getTopLikecountList() {
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		Connection con = getConnection();
 		boardDAO.setConnection(con);
@@ -35,5 +35,5 @@ public class BoardTopListService {
 		close(con);
 		return topLikedcountList;
 	}
-*/
+
 }

@@ -27,6 +27,7 @@ import action.MemberLoginAction;
 import action.MemberLogoutAction;
 import action.MemberModifyAction;
 import ajax.Ajax;
+import ajax.IndexLikeListAjax;
 import ajax.IndexTopListAjax;
 import bean.ActionForward;
 
@@ -80,7 +81,7 @@ public class MemberController extends HttpServlet {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/indexList.kly")) {
+		} else if(command.equals("/indexTopList.kly")) {
 			ajax = new IndexTopListAjax();
 			try {
 				responseText = ajax.getJSON(request, response); // JSON
@@ -89,7 +90,16 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			} 
 			
-		}  else if(command.equals("/emailAuthAction.kly")) {
+		} else if(command.equals("/indexLikeList.kly")) {
+			ajax = new IndexLikeListAjax();
+			try {
+				responseText = ajax.getJSON(request, response); // JSON
+				response.getWriter().write(responseText);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+		} else if(command.equals("/emailAuthAction.kly")) {
 			action = new EmailAuthAction();
 			try {
 				forward = action.execute(request, response);
