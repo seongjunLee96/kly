@@ -22,7 +22,7 @@
     
 	<!-- 리스트 출력 프로세스 -->
 	<script type="text/javascript">
-		function ajs() { // 이게 페이지 로드 시 출력되게 수정, 아마 window.onload
+		window.onload = function () { // 이게 페이지 로드 시 출력되게 수정, 아마 window.onload
 			var req= new XMLHttpRequest();
 			req.onreadystatechange = function() {
 				if(this.readyState == 4 && this.status ==200) {
