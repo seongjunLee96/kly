@@ -26,6 +26,8 @@ import action.MemberJoinAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
 import action.MemberModifyAction;
+import ajax.Ajax;
+import ajax.IndexTopListAjax;
 import bean.ActionForward;
 
 @WebServlet("*.kly")
@@ -66,6 +68,9 @@ public class MemberController extends HttpServlet {
 		
 		Action action = null;
 		ActionForward forward = null;
+		Ajax ajax = null;
+		String responseText = null;
+		
 		
 		// command에 따른 ActionForward 인스턴스 생성
 		if(command.equals("/memberJoin.kly")) {
@@ -76,12 +81,14 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(command.equals("/indexList.kly")) {
-			action = new BoardTopListAction();
+			ajax = new IndexTopListAjax();
 			try {
-				forward = action.execute(request, response);
-			} catch(Exception e) {
+				responseText = ajax.getJSON(request, response); // JSON
+				response.getWriter().write(responseText);
+			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			} 
+			
 		}  else if(command.equals("/emailAuthAction.kly")) {
 			action = new EmailAuthAction();
 			try {

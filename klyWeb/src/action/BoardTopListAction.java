@@ -23,14 +23,15 @@ public class BoardTopListAction implements Action{
 		ArrayList<BoardBean> topReadcountList = boardTopListService.getTopReadcountList();
 		//ArrayList<BoardBean> topLikedList = boardTopListService.getTopLikeList();
 		
+		// topReadcountList를 JSON 형태로 변환
+		
 		request.setAttribute("topReadcountList", topReadcountList);
 		//request.setAttribute("topLikedList", topLikedList);
 
-		ActionForward forward = new ActionForward();
-		forward.setPath("./index.jsp");
 		
+		
+		ActionForward forward = null;
 		return forward;
-		
 	}
 
 }

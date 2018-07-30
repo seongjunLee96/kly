@@ -22,14 +22,39 @@
     
 	<!-- 리스트 출력 프로세스 -->
 	<script type="text/javascript">
-		function ajs() {
+		function ajs() { // 이게 페이지 로드 시 출력되게 수정, 아마 window.onload
 			var req= new XMLHttpRequest();
 			req.onreadystatechange = function() {
 				if(this.readyState == 4 && this.status ==200) {
-					document.getElementById("demo").innerHTML = this.responseTest;
+					var arr = JSON.parse(this.responseText);
+					var out =
+						"<tr>" +
+							"<td>" + arr.value0[0] + "</td>"+
+							"<td><img src=\"" + arr.value0[1] + "\"></td>"+
+							"<td>" + arr.value0[2] + "</td>"+
+							"<td>" + arr.value0[3] + "</td>"+
+							"<td>" + 44 + "</td>"+
+						"</tr>" +
+						"<tr>" +
+							"<td>" + arr.value1[0] + "</td>"+
+							"<td><img src=\"" + arr.value1[1] + "\"></td>"+
+							"<td>" + arr.value1[2] + "</td>"+
+							"<td>" + arr.value1[3] + "</td>"+
+							"<td>" + 44 + "</td>"+
+						"</tr>" +
+						"<tr>" +
+							"<td>" + arr.value2[0] + "</td>"+
+							"<td><img src=\"" + arr.value2[1] + "\"></td>"+
+							"<td>" + arr.value2[2] + "</td>"+
+							"<td>" + arr.value2[3] + "</td>"+
+							"<td>" + 44 + "</td>"+
+						"</tr>";
+					}
+				
+					document.getElementById("topReadcountList").innerHTML = out;
 				}
-			};
-			req.open("GET","./just.txt",true);
+			
+			req.open("GET","./indexList.kly", true);
 			req.send();
 		}
 	</script>
@@ -76,14 +101,14 @@
 								조회수 상위 5개 게시물
 							</th>
 						</tr>
-					</thead>
-					<tbody id="topReadcountList">
-			            <tr style="font-weight: bold;">
+						 <tr style="font-weight: bold;">
 			                <td>번호</td>
 			                <td colspan="2">제목</td>
 			                <td>좋아요</td>
 			                <td>조회수</td>
 			            </tr>
+					</thead>
+					<tbody id="topReadcountList">
 					</tbody>
 				</table>	
 			</div>
@@ -98,14 +123,15 @@
 			                    	추천수 상위 5개 게시물
 			                </th>
 						</tr>
-					</thead>
-		            <tbody>
-			            <tr style="font-weight: bold;">
+						 <tr style="font-weight: bold;">
 			                <td>번호</td>
 			                <td colspan="2">제목</td>
 			                <td>좋아요</td>
 			                <td>조회수</td>
 			            </tr>
+					</thead>
+		            <tbody>
+			           
 			            <tr>
 			                <td>1</td>
 			                <td>img</td>
@@ -118,7 +144,7 @@
 			</div>
 		</div>
 		<div class="container" id="demo">
-			<button onclick="ajs()" >z</button>
+			<button onclick="ajs()" >Ajax Test Button</button>
 		</div>
 	</div>
 

@@ -638,14 +638,16 @@ public class BoardDAO {
 
 	public ArrayList<BoardBean> getTopReadcountList() {
 		String sql = "SELECT * FROM (SELECT * FROM BOARD ORDER BY BOARD_READCOUNT DESC)"
-				+ "WHERE ROWNUM >=1 AND ROWNUM <= 3;";
+				+ " WHERE ROWNUM >=1 AND ROWNUM <= 3";
 		
 		ArrayList<BoardBean> topReadcountList = new ArrayList<BoardBean>();
 		try {
 			pstmt = con.prepareStatement(sql);
+			System.out.println("쿼리문 준비");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				System.out.println("쿼리문 완료");
 				BoardBean boardBean = new BoardBean();
 				boardBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
 				boardBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));

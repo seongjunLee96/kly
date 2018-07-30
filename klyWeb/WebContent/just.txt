@@ -1,1 +1,5 @@
-{"sem":"just text.sdf"}
+var o = {
+  name: 'Lee',
+  gender: 'male',
+  age: 20
+};
