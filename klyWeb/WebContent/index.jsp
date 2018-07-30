@@ -93,8 +93,6 @@
 				req.open("GET","./indexLikeList.kly", true);
 				req.send();
 			}
-		 
-		 ajs();
 	</script>
 
 
@@ -184,6 +182,10 @@
 	<div class="jumbotron text-center">
 		<p>&copy; 2018 kly</p>
 	</div>
-
+	
+	<script>
+	 	ajs();
+	</script>
+	
 </body>
 </html>

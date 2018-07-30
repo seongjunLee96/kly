@@ -19,9 +19,9 @@
         <a href="./index.jsp"><img src="./images/kly_logo_white.png" style="height: 45px" /></a>
 
         <!-- Links -->
-		<ul class="navbar-nav mr-auto">
+		<ul class="navbar-nav mx-auto">
 		    <li class="nav-item">
-				<a class="nav-link" href="./List.jsp">video list</a>
+				<a class="btn btn-outline-warning" style="width:300px;" href="./List.jsp">video list</a>
 			</li>
 		</ul>
         
