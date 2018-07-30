@@ -77,9 +77,9 @@
                                        <a href="./images/index.jsp"><img src="./images/logo.png" style="display:block; height: 45px" /></a>
                                     </div>
                                     
-                                    <label><h5>아이디</h5></label>
+                                    <h5><label>아이디</label></h5>
                                     <input class="form-control" name="loginId" type="text" id="id" />
-                                    <label><h5>비밀번호</h5></label>
+                                    <h5><label>비밀번호</label></h5>
                                     <input class="form-control" name="loginPwd" type="password" id="pwd" />
                                     <a href="#"><u>혹시 비밀번호를 잊어버리셨나요?</u></a>
                             </div>

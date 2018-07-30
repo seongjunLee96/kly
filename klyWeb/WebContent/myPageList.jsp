@@ -77,7 +77,7 @@
 									<tr>
 										<td>${article.BOARD_SUBJECT}</td>
 										<td>${article.BOARD_VIDEO_URL}</td>
-										<td><button class="btn btn-info">수정</button></td>
+										<td><button class="btn btn-info" data-toggle="modal" data-target="#ArticleForm" >수정</button></td>
 									<tr>
 								</c:forEach>
 							</c:when>
@@ -87,7 +87,7 @@
 									<tr>
 										<td>${comment.COMMENT_CON}</td>
 										<td>${comment.COMMENT_DATE}</td>
-										<td><button class="btn btn-info">수정</button></td>
+										<td><button class="btn btn-info" data-toggle="modal" data-target="#ArticleForm" >수정</button></td>
 									<tr>
 								</c:forEach>
 							</c:when>
@@ -97,7 +97,11 @@
 									<tr>
 										<td>${like.BOARD_NUM}</td>
 										<td>${like.LIKE_NUM}</td>
-										<td><button class="btn btn-info">수정</button></td>
+										 <!-- 좋아요를 했을 경우 좋아요 취소(danger) -->
+										<td><button class="btn btn-danger" >좋아요 취소</button></td>
+										 
+										 <!-- 좋아요를 취소 했을 경우 좋아요(primary) -->
+										 <td><button class="btn btn-primary" >좋아요 취소</button></td>
 									<tr>
 								</c:forEach>
 							</c:when>
