@@ -85,7 +85,10 @@ public class MemberDAO {
 					mb.setMEMBER_CHECKED(rs.getInt(4));
 					mb.setMEMBER_DATE(rs.getDate(5));
 					mb.setMEMBER_SUSPENED(rs.getInt(6));
-				} 
+				} else {
+					System.out.println("비밀번호 틀림");
+					mb = null;
+				}
 			} else {
 				mb = null;
 			}
