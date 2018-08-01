@@ -28,7 +28,7 @@
 			Open modal
 		</button>
 
-        <!-- The Modal -->
+        <!-- 게시글 등록 -->
         <form action="./boardWrite.kly" method="get" id="boardWrite" onsubmit="return alertSelectCategory()">
             <div class="modal fade" id="board">
                 <div class="modal-dialog modal-lg">
