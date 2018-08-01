@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class ReportBean {
 	private String MEMBER_ID;
-	private int BOARD_NUM;
-	private int REPORT_NUM;
-	private int REPORT_COUNT;
-	private Date REPORT_DATE;
+	private int BOARD_NUM;	//글 번호
+	private int REPORT_NUM;	//신고 번호
+	private int REPORT_COUNT;	//신고 횟수
+	private Date REPORT_DATE;	//신고 시간
 	
 	public String getMEMBER_ID() {
 		return MEMBER_ID;

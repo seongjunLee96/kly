@@ -21,7 +21,7 @@
         <!-- Links -->
 		<ul class="navbar-nav mx-auto">
 		    <li class="nav-item">
-				<a class="btn btn-outline-warning" style="width:300px;" href="./List.jsp">video list</a>
+				<a class="btn btn-outline-warning" style="width:300px;" href="./boardList.kly">video list</a>
 			</li>
 		</ul>
         

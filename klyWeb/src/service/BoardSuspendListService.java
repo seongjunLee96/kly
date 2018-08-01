@@ -8,42 +8,28 @@ import java.util.ArrayList;
 
 import dao.BoardDAO;
 import bean.BoardBean;
+import bean.ReportBean;
 
 public class BoardSuspendListService {
 
-	/*public ArrayList<BoardBean> getboardSuspendList(int limit) {
+	public ArrayList<BoardBean> getBoardSuspendList() {
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		Connection con = getConnection();
 		boardDAO.setConnection(con);
-		System.out.println("55");
-		ArrayList<BoardBean> boardSuspendList = 
-				boardDAO.getboardSuspendList(limit);
+
+		ArrayList<BoardBean> boardSuspendList = boardDAO.getboardSuspendList();
 		close(con);
-		System.out.println("66");
 		return boardSuspendList;
-	}*/
-
-	public int getListCount() {
-		BoardDAO boardDAO = BoardDAO.getInstance();
-		Connection con = getConnection();
-		boardDAO.setConnection(con);
-		
-		int listCount = 0;
-		listCount = boardDAO.getListCount();
-		close(con);
-		return listCount;
 	}
-
-	public ArrayList<BoardBean> getBoardList(int page, int limit) {
+	
+	public ArrayList<ReportBean> getReportSuspendList() {
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		Connection con = getConnection();
 		boardDAO.setConnection(con);
-		
-		ArrayList<BoardBean> boardList = 
-				boardDAO.getBoardList(page, limit);
+
+		ArrayList<ReportBean> reportSuspendList = boardDAO.getreportSuspendList();
 		close(con);
-		
-		return boardList;
+		return reportSuspendList;
 	}
 
 }

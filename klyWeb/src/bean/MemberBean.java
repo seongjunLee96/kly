@@ -10,7 +10,7 @@ public class MemberBean {
 	private String MEMBER_EMAIL;
 	private int MEMBER_CHECKED;
 	private Date MEMBER_DATE;
-	private int MEMBER_SUSPENED;
+	private Date MEMBER_SUSPENED;
 	
 	public String getMEMBER_ID() {
 		return MEMBER_ID;
@@ -54,10 +54,10 @@ public class MemberBean {
 	public void setMEMBER_DATE(Date mEMBER_DATE) {
 		MEMBER_DATE = mEMBER_DATE;
 	}
-	public int getMEMBER_SUSPENED() {
+	public Date getMEMBER_SUSPENED() {
 		return MEMBER_SUSPENED;
 	}
-	public void setMEMBER_SUSPENED(int mEMBER_SUSPENED) {
+	public void setMEMBER_SUSPENED(Date mEMBER_SUSPENED) {
 		MEMBER_SUSPENED = mEMBER_SUSPENED;
 	}
 

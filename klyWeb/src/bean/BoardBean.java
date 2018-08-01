@@ -11,25 +11,20 @@ public class BoardBean {
 	private String BOARD_VIDEO_URL;	//동영상 URL
 	private int BOARD_READCOUNT;	//게시물 조회수
 	private int BOARD_LIKECOUNT;	//좋아요 수
-	private int BOARD_REPORTCOUNT;
-	private int BOARD_BLIND;	//게시글 차단 여부
+	private int BOARD_REPORTCOUNT; // 신고수
 	private String BOARD_TAG;	//태그
 	private String BOARD_CATEGORY;	//카테고리
-	private int BOARD_REPORT_NUM;	//신고 횟수
-	private Date BOARD_REPORT_DATE;	//신고 날짜
+	private int BOARD_BLIND;	//게시글 차단 여부
+	private String BOARD_YOUTUBE_ID;  //유튜브 고유번호
+
 	
-	
-	public int getBOARD_REPORT_NUM() {
-		return BOARD_REPORT_NUM;
+
+
+	public String getBOARD_YOUTUBE_ID() {
+		return BOARD_YOUTUBE_ID;
 	}
-	public void setBOARD_REPORT_NUM(int bOARD_REPORT_NUM) {
-		BOARD_REPORT_NUM = bOARD_REPORT_NUM;
-	}
-	public Date getBOARD_REPORT_DATE() {
-		return BOARD_REPORT_DATE;
-	}
-	public void setBOARD_REPORT_DATE(Date bOARD_REPORT_DATE) {
-		BOARD_REPORT_DATE = bOARD_REPORT_DATE;
+	public void setBOARD_YOUTUBE_ID(String bOARD_YOUTUBE_ID) {
+		BOARD_YOUTUBE_ID = bOARD_YOUTUBE_ID;
 	}
 	public String getMEMBER_ID() {
 		return MEMBER_ID;
@@ -103,5 +98,5 @@ public class BoardBean {
 	public void setBOARD_TAG(String bOARD_TAG) {
 		BOARD_TAG = bOARD_TAG;
 	}
-	
+
 }

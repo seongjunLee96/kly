@@ -21,7 +21,7 @@ public class BoardListService {
 			close(con);
 			return boardlist;
 		}
-	
+	/** */
 	public ArrayList<BoardBean> getReadList(BoardBean category) {
 		Connection con = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();

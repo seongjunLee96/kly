@@ -133,12 +133,9 @@
 			<button type="button" class="btn btn-outline-info"
 				style="width: 95%; margin: 5px 5px 80px 5px;" id="category"
 				onclick="location='boardCategory.kly?category=기타'">기타</button>
-			
-			<!--  로그인 했을 때만 사용 가능  -->
 			<button type="button" class="btn btn-outline-info"
 				style="width: 95%;" id="register"
-				data-toggle="modal" data-target="#board">게시글 등록</button>
-			
+				onclick="location='boardWrite.jsp'">게시글 등록</button>
 			<!-- 검색기능  태그나 게시글 제목을 입력해 검색할 수 있음-->
 			<form action="./boardSearch.kly" method="post">
 				<div class="input-group mb-3">
@@ -171,14 +168,14 @@
 				<div id="id0${status.count}" class="panel black display-container"
 					style="display: none;">
 					<span onclick="this.parentElement.style.display='none'"><i
-						class="fa fa-close"></i></span>
+						class="fa fa-close btn-light"></i></span>
 					<div>
 						<div class="view" style="width: 40%">
 							<div class="list-group" style="float: right">
 								<div class="bg-light rounded-top"
-									style="text-align: center; border: 1px solid; height: 32px; width: 420px;">
-									<p style="font-size: 25px">${board.BOARD_SUBJECT}
-									<p>&nbsp;&nbsp;${board.MEMBER_ID}
+									style="border: 1px solid; height: 32px; width: 420px;">
+									<span style="font-size: 25px;">&nbsp;${board.BOARD_SUBJECT}</span>
+									<span style="color: skyblue">&nbsp;&nbsp;${board.MEMBER_ID}</span>
 								</div>
 								<div>${board.BOARD_VIDEO_URL}</div>
 							</div>
@@ -193,7 +190,8 @@
 		 								삭제도 마찬가지로 작성자 id와 로그인중인 계정을 비교해 다르면 권한이 없다며 삭제되지 않음-->
 									<div>
 										<img class="btn-img" src="./images/like.png"
-											onclick="location='boardLike.kly?board_num=${board.BOARD_NUM}&member_id=${loginInfo.MEMBER_ID}'">${board.BOARD_LIKECOUNT}
+											onclick="location='boardLike.kly?board_num=${board.BOARD_NUM}&member_id=${loginInfo.MEMBER_ID}'">
+											<span style="color:blue">${board.BOARD_LIKECOUNT}</span>
 										<div class="btn-group" style="text-align: right">
 											<img class="btn-img" src="./images/report.jpg"
 												onclick="location='boardReport.kly?board_num=${board.BOARD_NUM}&member_id=${loginInfo.MEMBER_ID}'">
@@ -217,7 +215,7 @@
 											action="./boardComment.kly?board_num=${board.BOARD_NUM}&member_id=${loginInfo.MEMBER_ID}"
 											method="post">
 											<div class="input-group mb-3"
-												style="width: 400px; position: absolute; bottom: 0px;">
+												style="width: 398px; position: absolute; bottom: 0px; margin-left: 1px">
 												<input type="text" class="form-control" name="comment">
 												<div class="input-group-append">
 													<button class="btn btn-success" type="submit">등록</button>
@@ -239,19 +237,21 @@
 						<tr>
 					</c:if>
 					<td>
-						<div class="card" id="card">
+						<div class="card" id="card" style="height:220px">
 							<div class="card-body text-center">
 								<div class="videoplay">
 									<img class="btn-img" src="./images/Lighthouse.jpg"
 										style="width: 200px; height: 120px;"
 										onclick="document.getElementById('id0${status.count}').style.display='block'">
-									<span class="videotitle">${board.BOARD_SUBJECT}</span> <span
-										class="writer">${board.MEMBER_ID}</span>
+									<div>
+										<span class="writer" style="color: blueviolet;">${board.MEMBER_ID}</span>
+										<span class="videotitle">${board.BOARD_SUBJECT}</span>
+									</div>
 									<div>
 										<span class="videoCategory">분류:${board.BOARD_CATEGORY}</span>
-										<span class="videoLike"><img src="./images/like.png">${board.BOARD_LIKECOUNT}</span>
-										<span class="videoReadCount"><img
-											src="./images/view.jpg">${board.BOARD_READCOUNT}</span>
+										<span class="videoLike" style="color: blue"><img
+											src="./images/like.png">${board.BOARD_LIKECOUNT}</span> <span
+											class="videoReadCount"><img src="./images/view.jpg">${board.BOARD_READCOUNT}</span>
 									</div>
 									<div>
 										<span class="videoUptime">${board.BOARD_DATE}</span>
@@ -274,97 +274,5 @@
 		<button type="button" class="btn btn-default btn-sm btn-block"
 			onclick="javascript:;" id="more">더보기</button>
 	</div>
-	
-	<!-- 게시글 등록 -->
-    <form action="./boardWrite.kly" method="get" id="boardWrite" onsubmit="return alertSelectCategory()">
-        <div class="modal fade" id="board">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Modal Heading</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-			<div class="form-group" id="category">
-					<label for="category" style="display:inline;">게시판</label>
-				<select class="form-control" name="category" id="selectedCategory">
-					<option value = "select" selected="selected">게시판을 선택하세요</option><!-- '게시판을 선택하세요'입력하면 alert : '게시판을 선택하세요' --> 
-					<option value = "free" >자유</option>
-					<option value = "pubg">배그</option>
-					<option value = "lol">롤</option>
-					<option value = "animal">동물</option>
-				</select>
-                        </div>
-		
-			<input type = hidden name="ID" value="${loginInfo.getMEMBER_ID()}">
-                    
-                        <div id="subject">
-                            <label for="subject" style="display:inline;">제목</label>
-                            <input type="text" class="form-control" name="subject" placeholder="게시글 제목을 입력하세요" required>
-                        </div>
-
-                        <div id="video">
-                            <label for="video_upload">동영상 올리기</label>
-                            <input type = "radio" id="video_upload" name="videoFile" value="upload" onclick="switchDisplay('input_upload');">
-                            
-                            <label for="video_URL">URL</label>
-                            <input type="radio" id="video_URL" name="videoURL" value="url" onclick="switchDisplay('input_url');">
-
-                            <div id="input_upload" style="display:none">
-                                <input type="file" name="file">
-                            </div>
-
-                            <div id="input_url" style="display:none">
-                                <input type="url" class="form-control" name="link" value="http://">
-                            </div>
-                        </div>
-
-
-                        <div id="tag">
-                            <label for="tag">태그</label>
-                            <input type="text"  class="form-control" name="tag" placeholder="태그와 태그는 해쉬태그로 구분하며, 10개까지 입력하실 수 있습니다.">
-                            <!-- <input type="text" name="tagnames" id="tagnames" class="box_input _click(TagValidator|TagNames) _keyup(TagValidator|ValidateTagNames) _blur(TagValidator|ValidateTagNames)"> -->
-                        </div>
-
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">등록</button><!-- data-dismiss="modal" -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    
-    <!-- 게시글 등록 스크립트 -->
-    <script>
-	function alertSelectCategory() {
-		var whatCategory = document.getElementById("selectedCategory");
-		if (whatCategory.value == "select") {
-			alert('게시판을 선택하세요.');
-			document.getElementById("category").focus();
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-    /*동영상 첨부 방식선택*/
-    function switchDisplay(select) {
-        if (select == "input_upload") {
-            document.getElementById("input_upload").style.display = "";
-            document.getElementById("input_url").style.display = 'none';
-        } else {
-             document.getElementById("input_upload").style.display = 'none';
-            document.getElementById("input_url").style.display = "";
-        }
-    }
-	</script>
-    
 </body>
 </html>
