@@ -22,33 +22,33 @@ public class BoardListService {
 			return boardlist;
 		}
 	
-	public ArrayList<BoardBean> getReadlist() {
+	public ArrayList<BoardBean> getReadList(BoardBean category) {
 		Connection con = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con);
 		
-		ArrayList<BoardBean> boardlist = boardDAO.getReadList();
+		ArrayList<BoardBean> boardlist = boardDAO.getReadList(category);
 		close(con);
 		return boardlist;
 	}
-	public ArrayList<BoardBean> getLikelist() {
+	public ArrayList<BoardBean> getLikeList(BoardBean category) {
 		Connection con = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con);
 		
 		
-		ArrayList<BoardBean> boardlist = boardDAO.getLikeList();
+		ArrayList<BoardBean> boardlist = boardDAO.getLikeList(category);
 		close(con);
 		return boardlist;
 	}
 	
-	public ArrayList<BoardBean> getCategory() {
+	public ArrayList<BoardBean> getCategory(BoardBean category) {
 		Connection con = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con);
 		
 		
-		ArrayList<BoardBean> boardList = boardDAO.getCategory();
+		ArrayList<BoardBean> boardList = boardDAO.getCategory(category);
 		close(con);
 		return boardList;
 	}

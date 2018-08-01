@@ -11,6 +11,7 @@ public class BoardBean {
 	private String BOARD_VIDEO_URL;	//동영상 URL
 	private int BOARD_READCOUNT;	//게시물 조회수
 	private int BOARD_LIKECOUNT;	//좋아요 수
+	private int BOARD_REPORTCOUNT;
 	private int BOARD_BLIND;	//게시글 차단 여부
 	private String BOARD_TAG;	//태그
 	private String BOARD_CATEGORY;	//카테고리
@@ -83,6 +84,12 @@ public class BoardBean {
 	}
 	public void setBOARD_LIKECOUNT(int bOARD_LIKECOUNT) {
 		BOARD_LIKECOUNT = bOARD_LIKECOUNT;
+	}
+	public int getBOARD_REPORTCOUNT() {
+		return BOARD_REPORTCOUNT;
+	}
+	public void setBOARD_REPORTCOUNT(int bOARD_REPORTCOUNT) {
+		BOARD_REPORTCOUNT = bOARD_REPORTCOUNT;
 	}
 	public int getBOARD_BLIND() {
 		return BOARD_BLIND;

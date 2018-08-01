@@ -1,11 +1,14 @@
 package bean;
 
+import java.util.Date;
+
 public class ReportBean {
 	private String MEMBER_ID;
 	private int BOARD_NUM;
 	private int REPORT_NUM;
 	private int REPORT_COUNT;
-	private int REPORT_DATE;
+	private Date REPORT_DATE;
+	
 	public String getMEMBER_ID() {
 		return MEMBER_ID;
 	}
@@ -30,14 +33,11 @@ public class ReportBean {
 	public void setREPORT_COUNT(int rEPORT_COUNT) {
 		REPORT_COUNT = rEPORT_COUNT;
 	}
-	public int getREPORT_DATE() {
+	public Date getREPORT_DATE() {
 		return REPORT_DATE;
 	}
-	public void setREPORT_DATE(int rEPORT_DATE) {
+	public void setREPORT_DATE(Date rEPORT_DATE) {
 		REPORT_DATE = rEPORT_DATE;
 	}
-	
-	
-	
 	
 }

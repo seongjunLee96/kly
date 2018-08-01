@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.AdminCommentListAction;
+import action.BoardArrayAction;
 import action.BoardCategoryAction;
 import action.BoardCommentAction;
+import action.BoardDeleteAction;
+import action.BoardLikeAction;
 import action.BoardListAction;
+import action.BoardReportAction;
+import action.BoardSearchAction;
 import action.BoardSuspendListAction;
 import action.BoardTopListAction;
 import action.BoardWriteAction;
@@ -28,6 +33,7 @@ import action.MemberJoinAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
 import action.MemberModifyAction;
+import action.MoreListAction;
 import ajax.Ajax;
 import ajax.IndexLikeListAjax;
 import ajax.IndexTopListAjax;
@@ -219,6 +225,49 @@ public class MemberController extends HttpServlet {
 			}
 		} else if(command.equals("/boardCategory.kly")) {
 			action = new BoardCategoryAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if(command.equals("/boardArray.kly")) {
+			action = new BoardArrayAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardLike.kly")) {
+			action = new BoardLikeAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardReport.kly")) {
+			action = new BoardReportAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardDelete.kly")) {
+			action = new BoardDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/boardSearch.kly")) {
+			action = new BoardSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/moreList.kly")) {
+			action = new MoreListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch(Exception e) {
