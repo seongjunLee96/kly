@@ -74,7 +74,7 @@
                         <div class="form-group">
                             <div class="modal-body">
                                     <div class="container">
-                                       <a href="./images/index.jsp"><img src="./images/logo.png" style="display:block; height: 45px" /></a>
+                                       <a href="./index.jsp"><img src="./images/kly.png" style="display:block; height: 300px" /></a>
                                     </div>
                                     
                                     <h5><label>아이디</label></h5>
@@ -205,7 +205,7 @@
 			</div>
 		</div>
 	</div>
-    </nav>
+	</nav>
     
 </body>
 </html>
