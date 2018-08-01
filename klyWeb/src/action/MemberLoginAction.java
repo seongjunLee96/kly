@@ -39,19 +39,26 @@ public class MemberLoginAction implements Action {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html;charset=UTF-8");
 		
-		if(loginInfo != null) {
-			HttpSession session = request.getSession();
-			af = new ActionForward();
-			// 성공 했으면 다시 메인 페이지로
-			session.setAttribute("loginInfo", loginInfo);
-			af.setPath("./index.jsp");
-		} else {
+		
+		if (loginInfo == null) {
 			out.println("<script>");
 			out.println("alert('로그인에 실패했습니다.');");
 			out.println("location.href='./index.jsp';");
 			out.println("</script>");
+			out.close();
+		} else if (loginInfo.getMEMBER_SETTEMP() == 1) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginInfo", loginInfo);
+			af = new ActionForward();
+			af.setPath("./changeFromTemp.jsp");
+			af.setRedirect(true);
+		} else if(loginInfo != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginInfo", loginInfo);
+			af = new ActionForward();
+			// 성공 했으면 다시 메인 페이지로
+			af.setPath("./index.jsp");
 		}
-		
 		return af;
 	}
 

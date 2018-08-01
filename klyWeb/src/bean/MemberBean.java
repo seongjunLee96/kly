@@ -5,6 +5,8 @@ import java.util.Date;
 public class MemberBean {
 	private String MEMBER_ID;
 	private String MEMBER_PW;
+	private String MEMBER_TEMPPASS;
+	private int MEMBER_SETTEMP;
 	private String MEMBER_EMAIL;
 	private int MEMBER_CHECKED;
 	private Date MEMBER_DATE;
@@ -21,6 +23,18 @@ public class MemberBean {
 	}
 	public void setMEMBER_PW(String mEMBER_PW) {
 		MEMBER_PW = mEMBER_PW;
+	}
+	public String getMEMBER_TEMPPASS() {
+		return MEMBER_TEMPPASS;
+	}
+	public void setMEMBER_TEMPPASS(String mEMBER_TEMPPASS) {
+		MEMBER_TEMPPASS = mEMBER_TEMPPASS;
+	}
+	public int getMEMBER_SETTEMP() {
+		return MEMBER_SETTEMP;
+	}
+	public void setMEMBER_SETTEMP(int mEMBER_SETTEMP) {
+		MEMBER_SETTEMP = mEMBER_SETTEMP;
 	}
 	public String getMEMBER_EMAIL() {
 		return MEMBER_EMAIL;

@@ -260,4 +260,24 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public int setTempMember(String memberID, String tempPass) {
+		String sql = "UPDATE MEMBER SET MEMBER_TEMPPASS = "+tempPass+" WHERE MEMBER_ID = ?";
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, memberID);
+			result = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

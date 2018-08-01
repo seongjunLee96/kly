@@ -22,6 +22,8 @@ import action.EmailCheckedAction;
 import action.MemberContentListAction;
 import action.MemberDetailAction;
 import action.MemberDropAction;
+import action.MemberFindPassAction;
+import action.MemberInitPassAction;
 import action.MemberJoinAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
@@ -122,6 +124,20 @@ public class MemberController extends HttpServlet {
 			}
 		} else if(command.equals("/memberLogout.kly")) {
 			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberFindPass.kly")) {
+			action = new MemberFindPassAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/memberInitPass.kly")) { //
+			action = new MemberInitPassAction();
 			try {
 				forward = action.execute(request, response);
 			} catch(Exception e) {

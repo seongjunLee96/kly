@@ -170,6 +170,8 @@
             </div>
         </div>
 
+	<!-- 회원 비밀번호 찾기(modal) -->
+	<form action="memberFindPass.kly" method="post">
 	<div class="modal" id="MissingForm">
 		<div class="modal-dialog  modal-lg">
 			<div class="modal-content">
@@ -179,16 +181,19 @@
                    </div>
 				
 				<div class="modal-body">
+					현재 아이디를 입력하시면, 가입 정보에 기입된 이메일로 안내 메일을 발송해 드립니다.
+						<input class="form-control" type="text" name="memberID" placeholder="아이디를 입력해주세요.">
 				</div>
 				
 				<div class="modal-footer">
 					<p style="color:red;" id="passCheckMessage"></p>
-					<button class="btn btn-primary" type="submit">가입</button>
+					<button class="btn btn-info" type="submit">이메일 전송</button>
+	
 				</div>
 			</div>
 		</div>
 	</div>
-	
+	</form>
 	
 	<!-- 아이디 중복 체크 -->
 	<div class="modal" id="idCheckForm" tabindex="-1" role="diolog" aria-hidden="true">
