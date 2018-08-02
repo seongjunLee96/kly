@@ -46,6 +46,8 @@ public class MemberLoginAction implements Action {
 			out.println("location.href='./index.jsp';");
 			out.println("</script>");
 			out.close();
+		
+		// 임시 비밀번호로 로그인할 경우 비밀번호 변경 페이지로 이동
 		} else if (loginInfo.getMEMBER_SETTEMP() == 1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", loginInfo);

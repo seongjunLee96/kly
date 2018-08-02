@@ -61,7 +61,10 @@
         <div class="col-md-7 col-lg-10">
             <div class="container">
                 <h2>비밀번호 변경</h2>
-                <form class="form mt-5" action="memberInfoRivision.kly">
+                <div class="alert alert-warning mt-4" role="alert">
+					현재 임시 비밀번호를 이용 중입니다. 비밀번호를 다시 변경해 주세요.
+				</div>
+                <form class="form mt-5" action="memberInfoRivisionFromTemp.kly">
                     <div class="form-group">
                        <div class="row mb-3">
                             <div class="col-sm-3" style="text-align: center;">
@@ -74,7 +77,7 @@
                         
                         <div class="row mb-3">
                             <div class="col-sm-3" style="text-align: center;">
-                                <label><h5>현재 비밀번호</h5></label>
+                                <label><h5>임시 비밀번호</h5></label>
                             </div>
                             <div class="col-sm-9">
                                 <input class="form-control" name="currentPassword" type="text" placeholder="현재 비밀번호를 입력해 주세요."/>

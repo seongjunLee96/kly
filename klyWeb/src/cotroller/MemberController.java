@@ -35,6 +35,7 @@ import action.MemberJoinAction;
 import action.MemberLoginAction;
 import action.MemberLogoutAction;
 import action.MemberModifyAction;
+import action.MemberModifyFromTempAction;
 import action.MemberSuspedRelieveAction;
 import action.MemberSuspendAction;
 import action.MemberSuspendDeleteAction;
@@ -176,7 +177,14 @@ public class MemberController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/myContent.kly")) {
+		} else if (command.equals("/memberInfoRivisionFromTemp.kly")) {
+			action = new MemberModifyFromTempAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/myContent.kly")) {
 			action = new MemberContentListAction();
 			try {
 				forward = action.execute(request, response);

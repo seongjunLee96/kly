@@ -80,12 +80,14 @@ public class MemberDAO {
 				System.out.println("쿼리 결과 존재");
 				if(rs.getString("MEMBER_PW").equals(mb.getMEMBER_PW())) {
 					System.out.println("로그인 성공");
-					mb.setMEMBER_ID(rs.getString(1));
-					mb.setMEMBER_PW(rs.getString(2));
-					mb.setMEMBER_EMAIL(rs.getString(3));
-					mb.setMEMBER_CHECKED(rs.getInt(4));
-					mb.setMEMBER_DATE(rs.getDate(5));
-					mb.setMEMBER_SUSPENED(rs.getDate(6));
+					mb.setMEMBER_ID(rs.getString("MEMBER_ID"));
+					mb.setMEMBER_PW(rs.getString("MEMBER_PW"));
+					mb.setMEMBER_TEMPPASS(rs.getString("MEMBER_TEMPPASS"));
+					mb.setMEMBER_SETTEMP(rs.getInt("MEMBER_SETTEMP"));
+					mb.setMEMBER_EMAIL(rs.getString("MEMBER_EMAIL"));
+					mb.setMEMBER_CHECKED(rs.getInt("MEMBER_CHECKED"));
+					mb.setMEMBER_DATE(rs.getDate("MEMBER_DATE"));
+					mb.setMEMBER_SUSPENED(rs.getDate("MEMBER_SUSPENDED"));
 				} else {
 					System.out.println("비밀번호 틀림");
 					mb = null;
@@ -156,7 +158,7 @@ public class MemberDAO {
 	/** 마이페이지에서 정보 변경시 사용하는 메소드 */
 	public int modifyMember(MemberBean mb, String currentPassword, String changePassword) {
 		String confirm = "SELECT MEMBER_PW FROM MEMBER WHERE MEMBER_ID = ?";
-		String sql = "UPDATE MEMBER SET MEMBER_PW = ? WHERE MEMBER_ID = ?";
+		String sql = "UPDATE MEMBER SET MEMBER_PW = ?, MEMBER_SETTEMP = 0 WHERE MEMBER_ID = ?";
 		int result = 0;
 		try {
 			pstmt = con.prepareStatement(confirm);
@@ -189,10 +191,11 @@ public class MemberDAO {
 		return result;
 	}
 
+
 	/** 비밀번호 초기화 이메일에서 사용하는 메소드 */
 	public int modifyMember(String memberID, String tempPass) {
 		String sql1 = "UPDATE MEMBER SET MEMBER_SETTEMP = 1 WHERE MEMBER_ID = ?";
-		String sql2 = "UPDATE MEMBER SET MEMBER_TEMPPASS = ? WHERE MEMBER_ID = ?";
+		String sql2 = "UPDATE MEMBER SET MEMBER_PW = ? WHERE MEMBER_ID = ?";
 		int result = 0;
 		try {
 			pstmt = con.prepareStatement(sql1);
