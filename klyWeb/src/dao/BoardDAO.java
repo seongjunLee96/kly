@@ -706,7 +706,7 @@ public class BoardDAO {
 		return topLikeList; // 데이터베이스 오류
 	}
 	
-	public ArrayList<BoardBean> getboardSuspendList() {	//관리자 게시물 리스트 출력 - 게시글 정보
+	public ArrayList getboardSuspendList() {	//관리자 게시물 리스트 출력 - 게시글 정보
 		System.out.println("boardSuspendList DAO");
 		String sql = "SELECT BOARD.BOARD_URL, BOARD.BOARD_NUM, BOARD.BOARD_SUBJECT FROM BOARD, REPORT WHERE BOARD.BOARD_NUM = REPORT.BOARD_NUM AND REPORT.REPORT_COUNT >= 3";
 
@@ -745,7 +745,8 @@ public class BoardDAO {
 
 	public ArrayList<ReportBean> getreportSuspendList() {	//관리자 게시물 리스트 출력 - 신고 정보 
 		System.out.println("reportSuspendList DAO");
-		String sql = "SELECT * FROM REPORT WHERE REPORT_COUNT >= 3";
+		String sql = "SELECT BOARD.BOARD_URL, BOARD.BOARD_NUM, BOARD.BOARD_SUBJECT, REPORT.REPORT_COUNT, REPORT.REPORT_DATE " + 
+				"FROM REPORT INNER JOIN BOARD ON REPORT.BOARD_NUM = BOARD.BOARD_NUM WHERE REPORT.REPORT_COUNT >= 3";
 
 		ArrayList<ReportBean> reportSuspendList = new ArrayList<ReportBean>(); // boardSuspendList 객체 배열 선언
 		try {
@@ -755,10 +756,12 @@ public class BoardDAO {
 			while (rs.next()) {
 				ReportBean reportBean = new ReportBean(); // reportBean 객체 선언
 				reportBean.setBOARD_NUM(rs.getInt("BOARD_NUM"));
-				reportBean.setREPORT_NUM(rs.getInt("REPORT_NUM"));
-				reportBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
+				//reportBean.setREPORT_NUM(rs.getInt("REPORT_NUM"));
+				//reportBean.setMEMBER_ID(rs.getString("MEMBER_ID"));
 				reportBean.setREPORT_COUNT(rs.getInt("REPORT_COUNT"));
 				reportBean.setREPORT_DATE(rs.getDate("REPORT_DATE"));
+				reportBean.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+				reportBean.setBOARD_URL(rs.getString("BOARD_URL"));
 				reportSuspendList.add(reportBean);
 			}
 		} catch (Exception e) {

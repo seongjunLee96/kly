@@ -42,7 +42,7 @@
 
 		<div class="col-md-7 col-lg-10">
 			<table class="table table-hover">
-				<c:forEach var="board" items="${boardSuspendList}">
+				<c:forEach var="board" items="${reportSuspendList}">
 					<tr rowspan="3">
 						<td rowspan="3" style="width: 15%;">
 							<!-- 썸네일 미완성 --> <%-- 
@@ -64,14 +64,14 @@
 								onclick="location.href='boardSuspendRelieve.kly?BOARD_NUM=${board.BOARD_NUM}'">해제</button></td>
 					</tr>
 
-					<c:forEach var="report" items="${reportSuspendList}">
-						<tr>
-							<td style="width: auto;">신고 수 &nbsp;${report.REPORT_COUNT}</td>
-						</tr>
-						<tr>
-							<td style="width: auto;">신고 시간 &nbsp;${report.REPORT_DATE}</td>
-						</tr>
-					</c:forEach>
+					<%-- <c:forEach var="report" items="${reportSuspendList}"> --%>
+					<tr>
+						<td style="width: auto;">신고 수 &nbsp;${report.REPORT_COUNT}</td>
+					</tr>
+					<tr>
+						<td style="width: auto;">신고 시간 &nbsp;${report.REPORT_DATE}</td>
+					</tr>
+
 				</c:forEach>
 
 			</table>
