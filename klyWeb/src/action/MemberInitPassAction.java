@@ -21,32 +21,29 @@ public class MemberInitPassAction implements Action {
 		//session 객체의 정보 가져오기(가입정보)
 		HttpSession session = request.getSession();
 		
-		String memberID = null;
-		String tempPass = null;
+		String memberID = request.getParameter("memberID");
+		String tempPass = request.getParameter("tempPass");
 		
-		// 값을 받아오기
-		// if parameter 값이 있다면?
-		
-		// 받은 값으로 settemp 1로 변경 
-
-		// 다시 로그인 해주세요 알림
+		MemberModifyService memberModifyService = new MemberModifyService();
+		boolean result = memberModifyService.modifyMember(memberID, tempPass);
 		
 		ActionForward af = null;
 		PrintWriter out = response.getWriter();
-		/*if(result) {
+
+		if(result) {
 			System.out.println("수정 완료");
-			session.invalidate();
-			af = new ActionForward();
-			af.setPath("./index.jsp");
-			af.setRedirect(true);
+			out.println("<script>");
+			out.println("alert('비밀번호 초기화 완료');");
+			out.println("location.href='index.jsp';");
+			out.println("</script>");
+			out.close();
 		} else {
 			out.println("<script>");
 			out.println("alert('정보가 수정되지 않았습니다.');");
 			out.println("location.href='index.jsp';");
 			out.println("</script>");
 			out.close();
-		}*/
-				
+		}
 		return af;
 	}
 

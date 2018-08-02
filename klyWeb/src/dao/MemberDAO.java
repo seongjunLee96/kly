@@ -153,6 +153,7 @@ public class MemberDAO {
 		return result;
 	}
 
+	/** 마이페이지에서 정보 변경시 사용하는 메소드 */
 	public int modifyMember(MemberBean mb, String currentPassword, String changePassword) {
 		String confirm = "SELECT MEMBER_PW FROM MEMBER WHERE MEMBER_ID = ?";
 		String sql = "UPDATE MEMBER SET MEMBER_PW = ? WHERE MEMBER_ID = ?";
@@ -186,9 +187,40 @@ public class MemberDAO {
 			
 		}
 		return result;
-
 	}
 
+	/** 비밀번호 초기화 이메일에서 사용하는 메소드 */
+	public int modifyMember(String memberID, String tempPass) {
+		String sql1 = "UPDATE MEMBER SET MEMBER_SETTEMP = 1 WHERE MEMBER_ID = ?";
+		String sql2 = "UPDATE MEMBER SET MEMBER_TEMPPASS = ? WHERE MEMBER_ID = ?";
+		int result = 0;
+		try {
+			pstmt = con.prepareStatement(sql1);
+			pstmt.setString(1, memberID);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+					System.out.println("수정 단계");
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setString(1, tempPass);
+					pstmt.setString(2, memberID);
+					result = pstmt.executeUpdate();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				close(pstmt);
+				close(rs);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+	
+	/** 이메일 인증 완료 검증 메소드 */
 	public boolean getUserEmailChecked(String memberID) {
 		String sql = "SELECT MEMBER_CHECKED FROM MEMBER WHERE MEMBER_ID = ?";
 		
